@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+<div class="artistasoioi">
+    <title>Cadastrar Música</title>
+
+    <h1>Cadastrar Música</h1>
+
+    <form method="POST">
+        <label>
+        Título:
+            <input type="text" name="titulo" required><br>
+        </label>
+        <label>
+        Artista:
+        <select name="id_artista" required>
+            {% for artista in artistas %}
+                <option value="{{ artista.id_artista }}">{{ artista.nome }}</option>
+            {% endfor %}
+        </select>
+        <br>
+        </label>
+        <label>
+        Gênero:
+            <input type="text" name="genero" required><br><br>
+        </label>
+        <label>
+        Duração (ex: 03):
+            <input type="text" name="duracao" required><br><br>
+        </label>
+        <label>
+        Data de lançamento:
+        <input type="date" name="data_de_lancamento" required><br><br>
+        </label>
+        <label>
+        <button type="submit">Salvar</button>
+        </label>
+    </form>
+
+    <a href="/">Voltar</a>
+</div>
+{% endblock conteudo %}

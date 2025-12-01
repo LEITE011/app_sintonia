@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SINTONIA</title>
+
+    <link rel="stylesheet" href="/static/home.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='artistas.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='categoria.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='favoritos.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='musicas.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='playlist.css') }}">
+</head>
+<body>
+
+<header>
+    <div class="logo"><m>S</m>INTONIA</div>
+
+
+    <nav>
+        <a href="{{ url_for('cadastro_artista') }}">CADASTRO DE ARTISTAS</a>
+        <a href="{{ url_for('cadastro_musica') }}">CADASTRO DE MUSICAS</a>
+        <a href="{{ url_for('index') }}">HOME</a>
+    </nav>
+
+    {% if pagina == 'home' %}
+        <div class="search-container">
+            <input type="text" placeholder="Buscar...">
+            <button>Buscar</button>
+        </div>
+    {% endif %}
+</header>
+
+{% block conteudo %}{% endblock conteudo %}
+
+</body>
+</html>

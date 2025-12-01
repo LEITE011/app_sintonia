@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+<div class="artistasoioi">
+    <h1>Cadastrar Artista</h1>
+
+    <form method="post">
+        <label>
+        Nome:
+            <input type="text" name="nome" required><br>
+        </label>
+
+        <label>
+        Biografia:
+        <textarea name="biografia"></textarea><br>
+        </label>
+
+        <label>
+        Foto (URL):
+        <input type="text" name="foto"><br>
+        </label>
+
+        <label>
+        <button type="submit">Salvar</button>
+        </label>
+    </form>
+
+    <a href="/">Voltar</a>
+    </div>
+{% endblock conteudo %}

@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+
+
+<div class="HL">
+    <h1>Artistas</h1>
+
+    <div class="artistas-grid">
+        {% for artista in artistas %}
+        <a href="{{ url_for('artista_detalhe') }}">
+            <div class="artista-card">
+                <!-- Nome do artista em cima -->
+                <h3 class="artista-nome">{{ artista.nome }}</h3>
+
+                <!-- Biografia embaixo do nome -->
+                <p class="artista-bio">{{ artista.descricao }}</p>
+
+                <!-- Foto pequena embaixo -->
+                <img src="{{ artista.foto }}" alt="{{ artista.nome }}">
+            </div>
+        </a>
+
+        {% endfor %}
+    </div>
+</div>
+
+
+<div class="HL">
+    <h1>Músicas</h1>
+
+    <table class="tabela-musicas">
+        <thead>
+            <tr>
+                <th>Título</th>
+                <th>Artista</th>
+                <th>Gênero</th>
+                <th>Duração</th>
+                <th>Data de lançamento</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for musica in musicas %}
+            <tr>
+                <td>{{ musica.titulo }}</td>
+                <td>{{ musica.id_artista }}</td>
+                <td>{{ musica.genero }}</td>
+                <td>{{ musica.duracao }}</td>
+                <td>{{ musica.data_de_lancamento.strftime('%d/%m/%Y') }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock conteudo %}
+
