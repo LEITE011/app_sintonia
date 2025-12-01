@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+
+<div class="artistasoioi">
+    <form method="post">
+        <input type="text" name="nome" placeholder="Nome" required><br>
+        <input type="email" name="email" placeholder="Email" required><br>
+        <input type="password" name="senha" placeholder="Senha" required><br>
+        <input type="date" name="data_nascimento" placeholder="Data de nascimento" required><br>
+        <button type="submit">Cadastrar</button>
+    </form>
+</div>
+{% endblock conteudo %}

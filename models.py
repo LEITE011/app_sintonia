@@ -31,3 +31,11 @@ class Musica(Base):
     artista_rel = relationship("Artista", back_populates="musicas")
 
 
+class Usuario(Base):
+    __tablename__ = "usuarios"
+
+    id_usuario = Column(Integer, primary_key=True)
+    nome = Column(String, nullable=False)
+    email = Column(String, unique=True, nullable=False)
+    senha = Column(String, nullable=False)
+    data_nascimento= Column(Date, nullable=False)

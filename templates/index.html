@@ -54,5 +54,13 @@
     </table>
 </div>
 
+{% if session.usuario %}
+<p>Logado como: {{ session.usuario }}</p>
+<a href="/logout">Sair</a>
+{% else %}
+<a href="/login">Login</a> | <a href="/cadastro_usuario">Criar Conta</a>
+{% endif %}
+
+
 {% endblock conteudo %}
 

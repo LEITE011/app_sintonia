@@ -1,10 +1,9 @@
 import datetime
-
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, session
 from sqlalchemy import select
 from sqlalchemy.exc import SQLAlchemyError
 
-from models import Artista, Musica, local_secao
+from models import Artista, Musica, Usuario, local_secao
 
 app = Flask(__name__)
 app.secret_key = "shhhh"
@@ -79,6 +78,57 @@ def artista_detalhe():
     artistas_sql = select(Artista)
     return render_template('artista_detalhe.html', artista=artistas_sql)
 
+
+@app.route("/cadastro_usuario", methods=["GET", "POST"])
+def cadastro_usuario():
+    db_session = local_secao()
+    if request.method == "POST":
+        nome = request.form["nome"]
+        email = request.form["email"]
+        senha = request.form["senha"]
+        data_nascimento = request.form["data_nascimento"]
+
+        usuario = Usuario(
+            nome=nome,
+            email=email,
+            senha=senha,
+            data_nascimento=datetime.datetime.strptime(data_nascimento, "%Y-%m-%d"),
+        )
+
+        db_session.add(usuario)
+        db_session.commit()
+
+        return redirect(url_for("login"))
+
+    return render_template("cadastro.html")
+
+@app.route("/login", methods=["GET", "POST"])
+def login():
+    db_session = local_secao()
+
+    if request.method == "POST":
+        email = request.form["email"]
+        senha = request.form["senha"]
+
+        consulta = select(Usuario).where(
+            Usuario.email == email,
+            Usuario.senha == senha
+        )
+
+        usuario = db_session.execute(consulta).scalar_one_or_none()
+
+        if usuario:
+            session["usuario"] = usuario.nome
+            return redirect(url_for("index"))
+        else:
+            return "Usuário ou senha incorretos!"
+
+    return render_template("login.html")
+
+@app.route("/logout")
+def logout():
+    local_secao.pop("usuario", None)
+    return redirect(url_for("index"))
 
 if __name__ == "__main__":
     app.run(debug=True, port=5001)
