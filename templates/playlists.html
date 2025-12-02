@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+
+<div class="HL">
+    <h1>PLAYLISTS EXISTENTES</h1>
+
+    <table class="tabela-musicas">
+        <thead>
+            <tr>
+                <th>nome</th>
+                <th>descricao</th>
+                <th>id_usuario</th>
+                <th>data_criacao</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for playlist in playlist %}
+            <tr>
+                <td>{{ playlist.nome }}</td>
+                <td>{{ playlist.descricao }}</td>
+                <td>{{ playlist.data_criacao.strftime('%d/%m/%Y') }}</td>
+                <td>{{ playlist.id_usuario }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="/criar_playlist">Criar outra playlist</a>
+</div>
+
+{% endblock %}

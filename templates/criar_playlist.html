@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+
+
+<div class="artistasoioi">
+    <h1>Criar Playlist</h1>
+
+    <form method="post">
+
+        <label>Nome da Playlist:</label>
+        <input type="text" name="nome" required>
+
+        <label>Descrição:</label>
+        <textarea name="descricao"></textarea>
+
+        <button type="submit" class="btn">Criar Playlist</button>
+    </form>
+</div>
+
+{% endblock %}

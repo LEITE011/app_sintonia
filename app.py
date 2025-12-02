@@ -1,9 +1,8 @@
+from sqlalchemy.exc import SQLAlchemyError
 import datetime
 from flask import Flask, render_template, request, redirect, url_for, session
 from sqlalchemy import select
-from sqlalchemy.exc import SQLAlchemyError
-
-from models import Artista, Musica, Usuario, local_secao
+from models import *
 
 app = Flask(__name__)
 app.secret_key = "shhhh"
@@ -25,6 +24,8 @@ def index():
 
 @app.route("/cadastro_artista", methods=["GET", "POST"])
 def cadastro_artista():
+    if "usuario" not in session:
+        return redirect(url_for("login"))
     db_session = local_secao()
     if request.method == "POST":
         nome = request.form["nome"]
@@ -47,6 +48,8 @@ def cadastro_artista():
 
 @app.route("/cadastro_musica", methods=["GET", "POST"])
 def cadastro_musica():
+    if "usuario" not in session:
+        return redirect(url_for("login"))
     db_session = local_secao()
     artistas_sql = select(Artista)
     artistas = db_session.execute(artistas_sql).scalars().all()
@@ -73,14 +76,19 @@ def cadastro_musica():
 
     return render_template("musicas.html", artistas=artistas)
 
-@app.route("/artista", methods=["GET", "POST"])
-def artista_detalhe():
+@app.route("/artista/<id_artista>", methods=["GET", "POST"])
+def artista_detalhe(id_artista):
+    db_session = local_secao()
     artistas_sql = select(Artista)
-    return render_template('artista_detalhe.html', artista=artistas_sql)
+    user = db_session.execute(select(Artista).where(Artista.id_artista == id_artista["artista"])).scalars().one_or_none()
+
+    return render_template('artista_detalhe.html', artista=artistas_sql, user=user )
 
 
 @app.route("/cadastro_usuario", methods=["GET", "POST"])
 def cadastro_usuario():
+    if "usuario" not in session:
+        return redirect(url_for("login"))
     db_session = local_secao()
     if request.method == "POST":
         nome = request.form["nome"]
@@ -119,6 +127,7 @@ def login():
 
         if usuario:
             session["usuario"] = usuario.nome
+            session["id_usuario"] = usuario.id_usuario
             return redirect(url_for("index"))
         else:
             return "Usuário ou senha incorretos!"
@@ -129,6 +138,44 @@ def login():
 def logout():
     local_secao.pop("usuario", None)
     return redirect(url_for("index"))
+
+@app.route("/criar_playlist", methods=["GET", "POST"])
+def criar_playlist():
+    if "usuario" not in session:
+        return redirect(url_for("login"))
+
+    db_session = local_secao()
+
+    user = db_session.execute(select(Usuario).where(Usuario.id_usuario == session["id_usuario"])).scalars().one_or_none()
+
+    if request.method == "POST":
+        nome = request.form["nome"]
+        descricao = request.form["descricao"]
+
+        playlist = Playlist(
+            nome=nome,
+            descricao=descricao,
+            data_criacao=datetime.date.today(),
+            id_usuario=user.id_usuario
+        )
+
+        db_session.add(playlist)
+        db_session.commit()
+
+        return redirect(url_for("criar_playlist"))
+
+    return render_template("criar_playlist.html")
+
+@app.route("/playlists", methods=["GET", "POST"])
+def exibir_playlists():
+    if "usuario" not in session:
+        return redirect(url_for("login"))
+    db_session = local_secao()
+    playlist_sql = select(Playlist)
+    playlist = db_session.execute(playlist_sql).scalars().all()
+    print(playlist)
+    return render_template('playlists.html', playlist=playlist)
+
 
 if __name__ == "__main__":
     app.run(debug=True, port=5001)

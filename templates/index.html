@@ -8,7 +8,7 @@
 
     <div class="artistas-grid">
         {% for artista in artistas %}
-        <a href="{{ url_for('artista_detalhe') }}">
+        <a href="{{ url_for('artista_detalhe',id_artista=artista.id_artista) }}">
             <div class="artista-card">
                 <!-- Nome do artista em cima -->
                 <h3 class="artista-nome">{{ artista.nome }}</h3>
@@ -54,13 +54,14 @@
     </table>
 </div>
 
-{% if session.usuario %}
-<p>Logado como: {{ session.usuario }}</p>
-<a href="/logout">Sair</a>
-{% else %}
-<a href="/login">Login</a> | <a href="/cadastro_usuario">Criar Conta</a>
-{% endif %}
-
+<div class="HLL">
+    {% if session.usuario %}
+    <p>Logado como: {{ session.usuario }}</p>
+    <a href="/logout">Sair</a>
+    {% else %}
+    <a href="/login">Login</a> | <a href="/cadastro_usuario">Criar Conta</a>
+    {% endif %}
+</div>
 
 {% endblock conteudo %}
 

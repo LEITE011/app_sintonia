@@ -1,28 +1,30 @@
+
 {% extends 'base.html' %}
 
 {% block conteudo %}
 
-<div class="artista-detalhe">
+<div class="HL">
+    <h1>DESCRIÇÃO DOS ARTISTAS</h1>
 
-    <div class="bio-container">
+    <table class="tabela-musicas">
+        <thead>
+            <tr>
+                <th>nome</th>
+                <th>biografia</th>
 
-        <img class="artista-foto" src="{{ artista.foto }}" alt="{{ artista.nome }}">
+            </tr>
+        </thead>
 
-        <h1>{{ artista.nome }}</h1>
-
-        <p class="texto-bio">
-            {{ artista.descricao }}
-        </p>
-        {% for musica in musicas %}
-            {{ musica.titulo }}
-            {{ musica.id_artista }}
-            {{ musica.genero }}
-            {{ musica.duracao }}
-            {{ musica.data_de_lancamento.strftime('%d/%m/%Y') }}
-
-        <a href="/artistas" class="voltar">Voltar</a>
-    </div>
-
+        <tbody>
+            {% for exibir_detalhes_artistas in exibir_detalhes_artistas %}
+            <tr>
+                <td>{{ artistas.nome }}</td><br>
+                <td>{{ artistas.biografia }}</td><br>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="/cadastro_artista">Cadastrar um Novo Artista</a>
 </div>
 
 {% endblock conteudo %}

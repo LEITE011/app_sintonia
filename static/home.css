@@ -6,7 +6,19 @@ body {
 
 }
 
-.HL{
+.HL {
+    text-align: center;
+    color: #b56bff;
+    margin-bottom: 25px;
+    text-shadow: 0 0 10px #8f3dff;
+    text-align: center;
+    border: 1px solid blueviolet;
+    border-collapse: collapse;
+    font-family: "Arial Black";
+    padding: 5.9px;
+}
+
+.HLL {
     text-align: center;
     color: #b56bff;
     margin-bottom: 25px;
@@ -18,11 +30,11 @@ body {
     padding: 5.9px;
 }
 
-h3{
+h3 {
     color: black;
 }
 
-a{
+a {
     text-align: center;
     color: #b56bff;
     margin-bottom: 25px;
@@ -37,7 +49,8 @@ a{
     font-size: 24px;
     font-weight: bold;
 }
-m{
+
+m {
     color: #cb6ce6;
     font-size: 40px;
 }
@@ -187,6 +200,7 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: white;
     color: #333;
+
 }
 
 header {
@@ -387,233 +401,351 @@ footer {
 }
 
 body {
-.artistas-grid {
-display: grid;
-grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-gap: 20px;
-padding: 20px;
+    .artistas-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+        padding: 20px;
+    }
+
+
+    .artista-card {
+        background: linear-gradient(145deg, #1a1a1f, #0c0c10);
+        border: 2px solid #3d0f66;
+        border-radius: 20px;
+        padding: 20px;
+        text-align: center;
+        box-shadow: 0 0 20px #3d0f66aa;
+        transition: 0.3s;
+    }
+
+
+    .artista-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 0 25px #7a35c8;
+        border-color: #7a35c8;
+    }
+
+
+    .artista-nome {
+        font-size: 1.5rem;
+        color: #c28aff;
+        margin-bottom: 10px;
+    }
+
+
+    .artista-bio {
+        font-size: 0.95rem;
+        color: #d6caff;
+        margin-bottom: 15px;
+    }
+
+
+    img {
+        width: 100%;
+        height: auto;
+        border-radius: 12px;
+        border: 1px solid #5a2a91;
+        box-shadow: 0 0 10px #5a2a91aa;
+    }
+
+    body {
+        background: #0a0a0a;
+        font-family: "Poppins", sans-serif;
+        color: #fff;
+        margin: 0;
+        padding: 0;
+    }
+
+    .artistasoioi {
+        width: 90%;
+        max-width: 600px;
+        margin: 40px auto;
+        background: #141414;
+        padding: 30px;
+        border-radius: 16px;
+        box-shadow: 0 0 18px #4c1c8660;
+    }
+
+    .artistasoioi1 {
+        width: 90%;
+        max-width: 600px;
+        margin: 40px auto;
+        background: #141414;
+        padding: 30px;
+        border-radius: 16px;
+        box-shadow: 0 0 18px #4c1c8660;
+
+    }
+
+    .artistasoioi h1 {
+        text-align: center;
+        color: #b56bff;
+        margin-bottom: 25px;
+        text-shadow: 0 0 10px #8f3dff;
+    }
+
+    .artistasoioi label {
+        display: block;
+        margin-bottom: 15px;
+        color: #d0b3ff;
+        font-weight: 500;
+    }
+
+    .artistasoioi input,
+    .artistasoioi textarea {
+        width: 100%;
+        padding: 12px;
+        margin-top: 5px;
+        background: #1b1a1b;
+        border: 1px solid #6c2cff;
+        border-radius: 10px;
+        color: #fff;
+        outline: none;
+        transition: 0.3s;
+    }
+
+    .artistasoioi input:focus,
+    .artistasoioi textarea:focus {
+        border-color: #b56bff;
+        box-shadow: 0 0 8px #8f3dff;
+    }
+
+    .artistasoioi textarea {
+        height: 120px;
+        resize: none;
+    }
+
+    .artistasoioi button {
+        width: 100%;
+        padding: 12px;
+        margin-top: 10px;
+        background: linear-gradient(45deg, #6c2cff, #b56bff);
+        border: none;
+        border-radius: 10px;
+        color: #fff;
+        font-size: 17px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    .artistasoioi button:hover {
+        transform: scale(1.03);
+        box-shadow: 0 0 12px #a164ff;
+    }
+
+    .artistasoioi a {
+        display: inline-block;
+        margin-top: 20px;
+        color: #9e63ff;
+        text-decoration: none;
+        transition: 0.3s;
+    }
+
+    .artistasoioi a:hover {
+        color: #caa0ff;
+        text-shadow: 0 0 8px #9e63ff;
+    }
+
+    .tabela-musicas {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 25px;
+        background-color: #121212; /* preto mais moderno */
+        color: #ffffff;
+        border-radius: 12px;
+        overflow: hidden;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .tabela-musicas thead th {
+        background-color: #5a0ea1; /* roxo forte */
+        padding: 14px;
+        text-align: center; /* tudo alinhado */
+        font-size: 1rem;
+        font-weight: bold;
+        letter-spacing: 0.5px;
+    }
+
+    .tabela-musicas tbody td {
+        padding: 12px 10px;
+        text-align: center; /* tudo alinhado */
+        border-bottom: 1px solid #2e2e2e;
+        font-size: 0.95rem;
+
+        .tabela-musicas tbody tr:hover {
+            background-color: #1e0036; /* roxo escuro */
+            transition: 0.2s;
+        }
+
+        .tabela-musicas tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+
+        .artista-detalhe {
+            display: flex;
+            justify-content: center;
+            margin-top: 40px;
+            color: #fff;
+        }
+
+        .bio-container {
+            width: 60%;
+            background: #1a1a1a;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 0 15px #4b0082;
+            text-align: center;
+        }
+
+        .artista-foto {
+            width: 220px;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-bottom: 20px;
+            border: 3px solid #4b0082;
+        }
+
+        .texto-bio {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            text-align: justify;
+            margin-top: 15px;
+        }
+
+        .voltar {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 10px 20px;
+            background: #4b0082;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: 0.2s;
+        }
+
+        .voltar:hover {
+            background: #32005a;
+        }
+
+        .form-container {
+            width: 500px;
+            margin: 40px auto;
+            padding: 30px;
+            background: #1a1a1a;
+            border-radius: 18px;
+            box-shadow: 0px 0px 12px #7a00ff;
+            color: white;
+        }
+
+        .form-container h1 {
+            text-align: center;
+            margin-bottom: 25px;
+            color: #b366ff;
+            font-size: 28px;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+            color: #d3b3ff;
+        }
+
+        input[type="text"], textarea {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #7a00ff;
+            border-radius: 10px;
+            background: #0f0f0f;
+            color: white;
+            margin-top: 5px;
+        }
+
+        textarea {
+            height: 100px;
+            resize: none;
+        }
+
+        .btn {
+            margin-top: 25px;
+            width: 100%;
+            padding: 12px;
+            font-size: 17px;
+            background: #7a00ff;
+            border: none;
+            color: white;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .btn:hover {
+            background: #9d37ff;
+            transform: scale(1.02);
+        }
+
+        .titulo {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 32px;
+            color: #c084ff;
+            font-weight: bold;
+        }
+
+        .playlist-grid {
+            margin: 40px auto;
+            width: 90%;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
+        }
+
+        .playlist-card {
+            background: #1a1a1a;
+            padding: 20px;
+            border-radius: 18px;
+            box-shadow: 0px 0px 12px #7a00ff;
+            color: white;
+            transition: 0.2s;
+        }
+
+        .playlist-card:hover {
+            transform: scale(1.03);
+            box-shadow: 0px 0px 15px #a64dff;
+        }
+
+        .playlist-nome {
+            font-size: 22px;
+            margin-bottom: 10px;
+            color: #d8b2ff;
+            font-weight: bold;
+        }
+
+        .playlist-descricao {
+            font-size: 15px;
+            color: #cfcfcf;
+            min-height: 50px;
+        }
+
+        .btn-ver {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 15px;
+            background: #7a00ff;
+            border-radius: 10px;
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            transition: 0.2s;
+        }
+
+        .btn-ver:hover {
+            background: #9d37ff;
+            transform: scale(1.05);
+        }
+    }
 }
 
-
-.artista-card {
-background: linear-gradient(145deg, #1a1a1f, #0c0c10);
-border: 2px solid #3d0f66;
-border-radius: 20px;
-padding: 20px;
-text-align: center;
-box-shadow: 0 0 20px #3d0f66aa;
-transition: 0.3s;
-}
-
-
-.artista-card:hover {
-transform: translateY(-5px);
-box-shadow: 0 0 25px #7a35c8;
-border-color: #7a35c8;
-}
-
-
-.artista-nome {
-font-size: 1.5rem;
-color: #c28aff;
-margin-bottom: 10px;
-}
-
-
-.artista-bio {
-font-size: 0.95rem;
-color: #d6caff;
-margin-bottom: 15px;
-}
-
-
-img {
-width: 100%;
-height: auto;
-border-radius: 12px;
-border: 1px solid #5a2a91;
-box-shadow: 0 0 10px #5a2a91aa;
-}
-
-/* Fundo da página */
-body {
-    background: #0a0a0a;
-    font-family: "Poppins", sans-serif;
-    color: #fff;
-    margin: 0;
-    padding: 0;
-}
-
-/* Container do cadastro */
-.artistasoioi {
-    width: 90%;
-    max-width: 600px;
-    margin: 40px auto;
-    background: #141414;
-    padding: 30px;
-    border-radius: 16px;
-    box-shadow: 0 0 18px #4c1c8660;
-}
-
-/* Título */
-.artistasoioi h1 {
-    text-align: center;
-    color: #b56bff;
-    margin-bottom: 25px;
-    text-shadow: 0 0 10px #8f3dff;
-}
-
-/* Labels */
-.artistasoioi label {
-    display: block;
-    margin-bottom: 15px;
-    color: #d0b3ff;
-    font-weight: 500;
-}
-
-/* Inputs */
-.artistasoioi input,
-.artistasoioi textarea {
-    width: 100%;
-    padding: 12px;
-    margin-top: 5px;
-    background: #1b1a1b;
-    border: 1px solid #6c2cff;
-    border-radius: 10px;
-    color: #fff;
-    outline: none;
-    transition: 0.3s;
-}
-
-.artistasoioi input:focus,
-.artistasoioi textarea:focus {
-    border-color: #b56bff;
-    box-shadow: 0 0 8px #8f3dff;
-}
-
-/* Textarea */
-.artistasoioi textarea {
-    height: 120px;
-    resize: none;
-}
-
-/* Botão salvar */
-.artistasoioi button {
-    width: 100%;
-    padding: 12px;
-    margin-top: 10px;
-    background: linear-gradient(45deg, #6c2cff, #b56bff);
-    border: none;
-    border-radius: 10px;
-    color: #fff;
-    font-size: 17px;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.artistasoioi button:hover {
-    transform: scale(1.03);
-    box-shadow: 0 0 12px #a164ff;
-}
-
-/* Link Voltar */
-.artistasoioi a {
-    display: inline-block;
-    margin-top: 20px;
-    color: #9e63ff;
-    text-decoration: none;
-    transition: 0.3s;
-}
-
-.artistasoioi a:hover {
-    color: #caa0ff;
-    text-shadow: 0 0 8px #9e63ff;
-}
-
-.tabela-musicas {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 25px;
-    background-color: #121212;  /* preto mais moderno */
-    color: #ffffff;
-    border-radius: 12px;
-    overflow: hidden;
-    font-family: Arial, Helvetica, sans-serif;
-}
-
-/* Cabeçalho */
-.tabela-musicas thead th {
-    background-color: #5a0ea1; /* roxo forte */
-    padding: 14px;
-    text-align: center;   /* tudo alinhado */
-    font-size: 1rem;
-    font-weight: bold;
-    letter-spacing: 0.5px;
-}
-
-/* Linhas */
-.tabela-musicas tbody td {
-    padding: 12px 10px;
-    text-align: center;  /* tudo alinhado */
-    border-bottom: 1px solid #2e2e2e;
-    font-size: 0.95rem;
-}
-
-/* Hover */
-.tabela-musicas tbody tr:hover {
-    background-color: #1e0036; /* roxo escuro */
-    transition: 0.2s;
-}
-
-/* Última linha sem borda */
-.tabela-musicas tbody tr:last-child td {
-    border-bottom: none;
-}
-
-
-.artista-detalhe {
-    display: flex;
-    justify-content: center;
-    margin-top: 40px;
-    color: #fff;
-}
-
-.bio-container {
-    width: 60%;
-    background: #1a1a1a;
-    padding: 25px;
-    border-radius: 15px;
-    box-shadow: 0 0 15px #4b0082;
-    text-align: center;
-}
-
-.artista-foto {
-    width: 220px;
-    height: 220px;
-    object-fit: cover;
-    border-radius: 50%;
-    margin-bottom: 20px;
-    border: 3px solid #4b0082;
-}
-
-.texto-bio {
-    font-size: 1.1rem;
-    line-height: 1.6;
-    text-align: justify;
-    margin-top: 15px;
-}
-
-.voltar {
-    display: inline-block;
-    margin-top: 25px;
-    padding: 10px 20px;
-    background: #4b0082;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 6px;
-    transition: 0.2s;
-}
-
-.voltar:hover {
-    background: #32005a;
-}
