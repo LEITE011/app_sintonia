@@ -16,12 +16,10 @@
         </thead>
 
         <tbody>
-            {% for exibir_detalhes_artistas in exibir_detalhes_artistas %}
             <tr>
-                <td>{{ artistas.nome }}</td><br>
-                <td>{{ artistas.biografia }}</td><br>
+                <td>{{ user.nome }}</td><br>
+                <td>{{ user.biografia }}</td><br>
             </tr>
-            {% endfor %}
         </tbody>
     </table>
     <a href="/cadastro_artista">Cadastrar um Novo Artista</a>

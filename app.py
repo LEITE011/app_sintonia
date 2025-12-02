@@ -80,8 +80,7 @@ def cadastro_musica():
 def artista_detalhe(id_artista):
     db_session = local_secao()
     artistas_sql = select(Artista)
-    user = db_session.execute(select(Artista).where(Artista.id_artista == id_artista["artista"])).scalars().one_or_none()
-
+    user = db_session.execute(select(Artista).where(Artista.id_artista == id_artista)).scalar_one_or_none()
     return render_template('artista_detalhe.html', artista=artistas_sql, user=user )
 
 
