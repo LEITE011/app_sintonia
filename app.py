@@ -10,6 +10,8 @@ app.secret_key = "shhhh"
 
 @app.route("/")
 def index():
+    if "usuario" not in session:
+        return redirect(url_for("login"))
     db_session = local_secao()
     artistas_sql = select(Artista).order_by(Artista.nome)
     artistas = db_session.execute(artistas_sql).scalars().all()
@@ -86,8 +88,7 @@ def artista_detalhe(id_artista):
 
 @app.route("/cadastro_usuario", methods=["GET", "POST"])
 def cadastro_usuario():
-    if "usuario" not in session:
-        return redirect(url_for("login"))
+
     db_session = local_secao()
     if request.method == "POST":
         nome = request.form["nome"]
@@ -135,7 +136,7 @@ def login():
 
 @app.route("/logout")
 def logout():
-    local_secao.pop("usuario", None)
+    session.pop("usuario")
     return redirect(url_for("index"))
 
 @app.route("/criar_playlist", methods=["GET", "POST"])
@@ -172,9 +173,14 @@ def exibir_playlists():
     db_session = local_secao()
     playlist_sql = select(Playlist)
     playlist = db_session.execute(playlist_sql).scalars().all()
-    print(playlist)
-    return render_template('playlists.html', playlist=playlist)
+    print('yth',playlist)
+    # return render_template('playlists.html', playlist=playlist)
 
+
+    sql_playlist = select(Playlist, Usuario).join(Usuario, Usuario.id_usuario == Playlist.id_usuario)
+    playlist2 = db_session.execute(sql_playlist).all()
+    print('weq',playlist2)
+    return render_template( 'playlists.html',playlists=playlist2)
 
 if __name__ == "__main__":
     app.run(debug=True, port=5001)

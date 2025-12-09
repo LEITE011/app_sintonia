@@ -8,20 +8,23 @@
     <table class="tabela-musicas">
         <thead>
             <tr>
+                <th>nome da playlist</th>
+                <th>id_usuario</th>
                 <th>nome</th>
                 <th>descricao</th>
-                <th>id_usuario</th>
                 <th>data_criacao</th>
+
             </tr>
         </thead>
 
         <tbody>
-            {% for playlist in playlist %}
+            {% for p, u in playlists %}
             <tr>
-                <td>{{ playlist.nome }}</td>
-                <td>{{ playlist.descricao }}</td>
-                <td>{{ playlist.data_criacao.strftime('%d/%m/%Y') }}</td>
-                <td>{{ playlist.id_usuario }}</td>
+                <td>{{ p.nome }}</td>
+                <td>{{ p.id_usuario }}</td>
+                <td>{{ u.nome }}</td>
+                <td>{{ p.descricao }}</td>
+                <td>{{ p.data_criacao.strftime('%d/%m/%Y') }}</td>
             </tr>
             {% endfor %}
         </tbody>
